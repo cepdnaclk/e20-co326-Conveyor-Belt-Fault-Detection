@@ -41,6 +41,14 @@ services:
       - influxdb
     restart: unless-stopped
 
+  modbus:
+    image: oitc/modbus-server:latest
+    container_name: modbus
+    ports:
+      - '502:502'
+    restart: unless-stopped
+
+
 volumes:
   mosquitto-data:
   influxdb-data:
