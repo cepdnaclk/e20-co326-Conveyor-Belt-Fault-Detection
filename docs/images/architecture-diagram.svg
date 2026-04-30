@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f7fb"/>
+      <stop offset="100%" stop-color="#eef3fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#9bb0cb" flood-opacity="0.22"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#243b53"/>
+    </marker>
+    <style>
+      .title { font: 700 44px DejaVu Sans, Arial, sans-serif; fill: #10203a; }
+      .subtitle { font: 400 26px DejaVu Sans, Arial, sans-serif; fill: #42526b; }
+      .layerTag { font: 700 24px DejaVu Sans, Arial, sans-serif; fill: #ffffff; }
+      .boxTitle { font: 700 34px DejaVu Sans, Arial, sans-serif; fill: #10203a; }
+      .boxBody { font: 400 26px DejaVu Sans, Arial, sans-serif; fill: #42526b; }
+      .arrowLabel { font: 700 24px DejaVu Sans, Arial, sans-serif; fill: #10203a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1100" fill="url(#bg)"/>
+  <circle cx="130" cy="140" r="110" fill="#dfe8ff" opacity="0.9"/>
+  <circle cx="1460" cy="180" r="150" fill="#e5f4ea" opacity="0.95"/>
+  <circle cx="1380" cy="920" r="170" fill="#fff0d9" opacity="0.9"/>
+
+  <text x="80" y="104" class="title">Conveyor Belt Fault Detection Architecture</text>
+  <text x="80" y="166" class="subtitle">Edge sensing, MQTT transport, stream processing, and time-series visualization</text>
+
+  <rect x="240" y="210" width="1120" height="150" rx="28" fill="#ffffff" stroke="#1f4e79" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="268" y="234" width="112" height="48" rx="18" fill="#1f4e79"/>
+  <text x="318" y="267" text-anchor="middle" class="layerTag">Layer 4</text>
+  <text x="448" y="264" class="boxTitle">InfluxDB + Grafana</text>
+  <text x="448" y="324" class="boxBody">Stores time-series data and renders live dashboards using Flux.</text>
+
+  <rect x="240" y="420" width="1120" height="150" rx="28" fill="#ffffff" stroke="#2a6f97" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="268" y="444" width="112" height="48" rx="18" fill="#2a6f97"/>
+  <text x="318" y="477" text-anchor="middle" class="layerTag">Layer 3</text>
+  <text x="448" y="474" class="boxTitle">Node-RED</text>
+  <text x="448" y="534" class="boxBody">Consumes MQTT telemetry, transforms payloads, and writes/reads the database.</text>
+
+  <rect x="240" y="630" width="1120" height="150" rx="28" fill="#ffffff" stroke="#5a7d3b" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="268" y="654" width="112" height="48" rx="18" fill="#5a7d3b"/>
+  <text x="318" y="687" text-anchor="middle" class="layerTag">Layer 2</text>
+  <text x="448" y="684" class="boxTitle">Mosquitto MQTT Broker</text>
+  <text x="448" y="744" class="boxBody">Message broker carrying device telemetry and control commands.</text>
+
+  <rect x="240" y="840" width="1120" height="150" rx="28" fill="#ffffff" stroke="#9c4a1a" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="268" y="864" width="112" height="48" rx="18" fill="#9c4a1a"/>
+  <text x="318" y="897" text-anchor="middle" class="layerTag">Layer 1</text>
+  <text x="448" y="894" class="boxTitle">ESP32-S3 + MPU-6050 + Relay</text>
+  <text x="448" y="954" class="boxBody">Reads vibration, computes fault score, and can stop the belt when faults persist.</text>
+
+  <line x1="800" y1="368" x2="800" y2="418" stroke="#243b53" stroke-width="8" marker-end="url(#arrow)"/>
+  <rect x="672" y="381" width="256" height="48" rx="16" fill="#ffffff" stroke="#c6d2e0" stroke-width="2"/>
+  <text x="800" y="413" text-anchor="middle" class="arrowLabel">MQTT Sparkplug B</text>
+
+  <line x1="800" y1="578" x2="800" y2="628" stroke="#243b53" stroke-width="8" marker-end="url(#arrow)"/>
+  <rect x="684" y="591" width="232" height="48" rx="16" fill="#ffffff" stroke="#c6d2e0" stroke-width="2"/>
+  <text x="800" y="623" text-anchor="middle" class="arrowLabel">MQTT subscribe</text>
+
+  <line x1="800" y1="788" x2="800" y2="838" stroke="#243b53" stroke-width="8" marker-end="url(#arrow)"/>
+  <rect x="628" y="801" width="344" height="48" rx="16" fill="#ffffff" stroke="#c6d2e0" stroke-width="2"/>
+  <text x="800" y="833" text-anchor="middle" class="arrowLabel">HTTP Flux writes + reads</text>
+
+  <text x="80" y="1030" class="subtitle">Prepared for Day 1 documentation: Grafana, InfluxDB, MQTT, and edge device telemetry</text>
+</svg>
