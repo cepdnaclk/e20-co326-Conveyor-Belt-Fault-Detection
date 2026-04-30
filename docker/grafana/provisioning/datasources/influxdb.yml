@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    uid: influxdb
+    jsonData:
+      version: Flux
+      organization: co326
+      defaultBucket: conveyor_data
+    secureJsonData:
+      token: co326-conveyor-token
