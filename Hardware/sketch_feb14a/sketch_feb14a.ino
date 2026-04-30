@@ -32,7 +32,7 @@ const char* T_BIRTH = "spBv1.0/conveyorLine/NBIRTH/belt01";
 const char* T_DEATH = "spBv1.0/conveyorLine/NDEATH/belt01";
 
 // ── Pin Definitions (ESP32 Dev Module) ───────────────────
-#define RELAY_PIN    10
+#define RELAY_PIN     4
 #define LED_PIN       2      // On-board LED for status
 #define I2C_SDA      21      // Default I2C SDA on ESP32 Dev Module
 #define I2C_SCL      22      // Default I2C SCL on ESP32 Dev Module
@@ -217,11 +217,11 @@ void mqttCallback(char* topic, byte* payload, unsigned int len) {
   if (!deserializeJson(doc, msg)) {
     String cmd = doc["relay_command"] | "";
     if (cmd == "ON")  {
-      digitalWrite(RELAY_PIN, HIGH);
+      digitalWrite(RELAY_PIN, LOW);
       Serial.println("RELAY ON  — belt stopped");
     }
     if (cmd == "OFF") {
-      digitalWrite(RELAY_PIN, LOW);
+      digitalWrite(RELAY_PIN, HIGH);
       consecutive_faults = 0;  // Reset fault counter on manual resume
       Serial.println("RELAY OFF — belt resumed");
     }
@@ -337,7 +337,7 @@ void setup() {
 
   pinMode(RELAY_PIN, OUTPUT);
   pinMode(LED_PIN, OUTPUT);
-  digitalWrite(RELAY_PIN, LOW);
+  digitalWrite(RELAY_PIN, HIGH);
   digitalWrite(LED_PIN, LOW);
 
   Serial.println("╔══════════════════════════════════════════╗");
@@ -413,7 +413,7 @@ void loop() {
   }
 
   if (consecutive_faults >= 5 && digitalRead(RELAY_PIN) == LOW) {
-    digitalWrite(RELAY_PIN, HIGH);
+    digitalWrite(RELAY_PIN, LOW);
     Serial.println("⚠ AUTO-STOP triggered — 5 consecutive faults");
   }
 
@@ -461,7 +461,7 @@ void loop() {
   doc["anomaly_score"] = round(score*1000)/1000.0;
   doc["fault_flag"]    = fault_flag;
   doc["fault_type"]    = fault_type;
-  doc["relay_state"]   = digitalRead(RELAY_PIN);
+  doc["relay_state"]   = digitalRead(!RELAY_PIN);
   doc["elapsed_s"]     = elapsed / 1000;
   doc["consecutive_faults"] = consecutive_faults;
   doc["mode"]          = modeStr;
