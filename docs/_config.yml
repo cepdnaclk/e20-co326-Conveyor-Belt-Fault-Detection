@@ -1,13 +1,11 @@
-# This theme is based on https://github.com/jekyll/minima
-# Please refer above link to know the available configurations
+---
+title: "Conveyor Belt Fault Detection System"
+baseurl: "/e20-co326-Conveyor-Belt-Fault-Detection"
+url: "https://cepdnaclk.github.io"
 
-title: ""
-remote_theme: cepdnaclk/eYY-project-theme
-description: ""
-markdown: kramdown
+theme: suspended_ceiling
 
-kramdown:
-  parse_block_html: true
-  syntax_highlighter_opts:
-    block:
-      line_numbers: false
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
