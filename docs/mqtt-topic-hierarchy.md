@@ -1,0 +1,1 @@
+Topic Path, Direction, Payload Description, Purpose. Include all 4 Sparkplug B topics. Below the table, explain the UNS structure: Namespace = spBv1.0, Group ID = conveyorLine, Message Type = DDATA/DCMD/NBIRTH/NDEATH, Edge Node ID = belt01, Device ID = beltDrive.

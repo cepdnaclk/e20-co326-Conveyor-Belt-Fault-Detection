@@ -1,0 +1,9 @@
+flowchart TB
+  L1[Layer 1: ESP32-S3 + MPU-6050 + Relay]
+  L2[Layer 2: Mosquitto MQTT Broker]
+  L3[Layer 3: Node-RED]
+  L4[Layer 4: InfluxDB + Grafana]
+
+  L1 -->|MQTT Sparkplug B| L2
+  L2 -->|MQTT subscribe| L3
+  L3 -->|HTTP Flux writes + reads| L4
