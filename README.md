@@ -114,6 +114,7 @@ docker-compose up -d
 ## Documentation
 
 - [Project home page](docs/README.md)
+- [Project report](docs/Group03_Technical_Report.pdf)
 - [Undergraduate explanation](docs/UNDERGRADUATE_EXPLANATION.md)
 - [MQTT topic hierarchy](docs/mqtt-topic-hierarchy.md)
 - [Cybersecurity summary](docs/cybersecurity-summary.md)
